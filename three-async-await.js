@@ -28,10 +28,12 @@ const getCommits = (repoId) => {
   });
 };
 
-// Consume promises
 console.log("Before");
-const user = await getUser(1);
-const repos = await getRepositories(user.id);
-const commits = await getCommits(repos[0]);
-console.log("Commits received: ", commits);
+const displayCommits = async () => {
+  const user = await getUser(1);
+  const repos = await getRepositories(user.id);
+  const commits = await getCommits(repos[0]);
+  console.log("Commits received: ", commits);
+};
+displayCommits();
 console.log("After");
