@@ -23,16 +23,16 @@ const getCommits = (repoId, callback) => {
 };
 
 // Use anonymous function to solve callback hell problem
-const displayCommits = (commits) => {
+const getCommitsCallback = (commits) => {
   console.log("Commits received: ", commits);
 };
-const displayRepositories = (repos) => {
+const getReposCallback = (repos) => {
   console.log("Repositories received: ", repos);
-  getCommits(repos[0], displayCommits);
+  getCommits(repos[0], getCommitsCallback);
 };
 const displayUser = (user) => {
   console.log("User received: ", user);
-  getRepositories(user.id, displayRepositories);
+  getRepositories(user.id, getReposCallback);
 };
 
 console.log("Before");
