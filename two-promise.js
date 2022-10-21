@@ -27,4 +27,8 @@ const getCommits = (repoId) => {
 };
 
 console.log("Before");
+getUser(1)
+  .then((user) => getRepositories(user.id))
+  .then((repos) => getCommits(repos[0]))
+  .then((commits) => console.log("Commits received: ", commits));
 console.log("After");
