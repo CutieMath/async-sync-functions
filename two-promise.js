@@ -1,4 +1,6 @@
 // Method two: Use promises
+
+// Construct promises
 const getUser = (id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -26,9 +28,11 @@ const getCommits = (repoId) => {
   });
 };
 
+// Consume promises
 console.log("Before");
 getUser(1)
   .then((user) => getRepositories(user.id))
   .then((repos) => getCommits(repos[0]))
-  .then((commits) => console.log("Commits received: ", commits));
+  .then((commits) => console.log("Commits received: ", commits))
+  .catch((err) => console.log("Error: ", err.message));
 console.log("After");
