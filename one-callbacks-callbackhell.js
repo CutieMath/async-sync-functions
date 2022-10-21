@@ -15,11 +15,21 @@ const getRepositories = (userId, callback) => {
   }, 2000);
 };
 
+const getCommits = (repoId, callback) => {
+  setTimeout(() => {
+    console.log(`Fetch stuff from database for repository ${repoId}...`);
+    callback(["commit1", "commit2", "commit3"]);
+  }, 2000);
+};
+
 console.log("Before");
 getUser(1, (user) => {
   console.log("User received: ", user);
   getRepositories(user.id, (repos) => {
     console.log("Repositories received: ", repos);
+    getCommits(repos[0], (commits) => {
+      console.log("Commits received: ", commits);
+    });
   });
 });
 console.log("After");
